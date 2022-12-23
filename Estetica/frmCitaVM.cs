@@ -68,7 +68,7 @@ namespace Estetica
                         Cita cita = new Cita();
                         cita.CodCliente = Codcliente;
 
-                        if (ampmSeleccionado == "PM")
+                        if (ampmSeleccionado.Contains("PM"))
                         {
                             hora = hora + 12;
                         }

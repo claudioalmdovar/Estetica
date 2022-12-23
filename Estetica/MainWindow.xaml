@@ -40,7 +40,7 @@
                     CanUserResizeColumns="False"
                     AutoGenerateColumns="False"
                     RowHeaderWidth="0"
-                    SelectionMode="Extended"
+                    SelectionMode="Single"
                     SelectionUnit="FullRow"
 		            ScrollViewer.CanContentScroll="True" 
 		            ScrollViewer.VerticalScrollBarVisibility="Auto"
@@ -50,15 +50,15 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn
                                 Header="Cliente"
-                                Width="200*"
+                                Width="150*"
                                 IsReadOnly="True"
                                 Binding="{Binding Nombre}">
                     </DataGridTextColumn>
                     <DataGridTextColumn
-                                Header="Fecha"
+                                Header="Fecha cita"
                                 Width="150"
                                 IsReadOnly="True"
-                                Binding="{Binding Fecha, StringFormat=dd/MM/yyyy hh:mm:ss tt}">
+                                Binding="{Binding Fecha,StringFormat='{}{0:dd/MMM/yyyy hh:mm tt}', ConverterCulture=es-MX}">
                     </DataGridTextColumn>
                     <DataGridTextColumn
                                 Header="Telefono"
@@ -72,27 +72,31 @@
                                 IsReadOnly="True"
                                 Binding="{Binding Observacion}">
                     </DataGridTextColumn>
-                    <DataGridTemplateColumn Header="" Width="200">
+                    <DataGridTemplateColumn Header="" Width="80">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Width="80"
-                                            Content="Finalizar"
-                                            Name="btnSi"
-                                            Height="22"
-                                            Margin="3"
-                                            VerticalAlignment="Center"
-                                            HorizontalAlignment="Left"
-                                            Click="btnSi_Click">
+                                    <Button  Background="Transparent"
+                                             Margin="5,0"                         
+                                             BorderBrush="{x:Null}"
+                                             ToolTip="Finalizar"
+                                             Click="btnSi_Click">
+                                        <aw:ImageAwesome Width="20"
+                                                            Height="20"                                 
+                                                            Foreground="Green"
+                                                            Icon="Check">
+                                        </aw:ImageAwesome>
                                     </Button>
-                                    <Button Width="80"
-                                            Content="Cancelar"
-                                            Name="btnNo"
-                                            Height="22"
-                                            Margin="3"
-                                            VerticalAlignment="Center"
-                                            HorizontalAlignment="Left"
-                                            Click="btnNo_Click">
+                                    <Button  Background="Transparent"
+                                             Margin="5,0"                         
+                                             BorderBrush="{x:Null}"
+                                             ToolTip="Cancelar"
+                                             Click="btnNo_Click">
+                                        <aw:ImageAwesome Width="20"
+                                                            Height="20"                                 
+                                                            Foreground="red"
+                                                            Icon="Times">
+                                        </aw:ImageAwesome>
                                     </Button>
                                 </StackPanel>
                             </DataTemplate>
@@ -107,12 +111,13 @@
                     Margin="10">
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
-                <TextBlock Text="Servicios"
+                <TextBlock Text="Trabajos realizados"
                            FontSize="20"
                            TextAlignment="Center"/>
                 <Button  Background="Transparent"
                          Margin="5,0"                         
-                    BorderBrush="{x:Null}"
+                         BorderBrush="{x:Null}"
+                         ToolTip="Filtrar por cliente"
                          Click="Button_Click">
                     <aw:ImageAwesome Width="15"
                                      Height="15"                                 
@@ -137,9 +142,10 @@
                          BorderBrush="{x:Null}"
                          Click="Button_Click_1">
                     <aw:ImageAwesome Width="15"
-                                        Height="15"                                 
-                                    Foreground="MediumBlue"
-                                    Icon="Times">
+                                     Height="15" 
+                                     ToolTip="Quitar filtro"
+                                     Foreground="MediumBlue"
+                                     Icon="Times">
                     </aw:ImageAwesome>
                     <Button.Style>
                         <Style TargetType="Button">
@@ -166,7 +172,7 @@
                     CanUserResizeColumns="False"
                     AutoGenerateColumns="False"
                     RowHeaderWidth="0"
-                    SelectionMode="Extended"
+                    SelectionMode="Single"
                     SelectionUnit="FullRow"
 		            ScrollViewer.CanContentScroll="True" 
 		            ScrollViewer.VerticalScrollBarVisibility="Auto"
@@ -176,19 +182,19 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn
                                 Header="Cliente"
-                                Width="200*"
+                                Width="100*"
                                 IsReadOnly="True"
                                 Binding="{Binding Nombre}">
                     </DataGridTextColumn>
                     <DataGridTextColumn
-                                Header="Fecha"
+                                Header="Fecha terminado"
                                 Width="150"
                                 IsReadOnly="True"
-                                Binding="{Binding Fecha}">
+                                Binding="{Binding Fecha,StringFormat='{}{0:dd/MMM/yyyy hh:mm tt}', ConverterCulture=es-MX}">
                     </DataGridTextColumn>
                     <DataGridTextColumn
                                 Header="Telefono"
-                                Width="100"
+                                Width="80"
                                 IsReadOnly="True"
                                 Binding="{Binding Telefono}">
                     </DataGridTextColumn>
@@ -199,28 +205,35 @@
                                 Binding="{Binding Descripcion}">
                     </DataGridTextColumn>
                     <DataGridTextColumn
-                                Header="Importe"
-                                Width="200*"
+                                Header="Importe"                                
+                                Width="70"                                
                                 IsReadOnly="True"
-                                Binding="{Binding Importe}">
+                                Binding="{Binding Importe, StringFormat='#,#'}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextAlignment" Value="Right" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTemplateColumn Header="" Width="100">
+                    <DataGridTemplateColumn Header="" Width="70">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <Button Width="60"
-                                            Content="Detalle"
-                                            Name="btnDetalle"
-                                            Height="22"
-                                            VerticalAlignment="Center"
-                                            HorizontalAlignment="Left"
-                                            Click="btnDetalle_Click">
+                                    <Button  Background="Transparent"
+                                             Margin="5,0"
+                                             BorderBrush="{x:Null}"
+                                             ToolTip="Ver detalle"
+                                             Click="btnDetalle_Click">
+                                        <aw:ImageAwesome Width="20"
+                                                         Height="20" 
+                                                         Foreground="Gray"
+                                                         Icon="ListOl">  
+                                        </aw:ImageAwesome>
                                     </Button>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

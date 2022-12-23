@@ -38,7 +38,8 @@
                          PreviewKeyDown="txtmin_PreviewKeyDown"
                          MaxLength="2" Text="{Binding minuto}"></TextBox>
                 <ComboBox Name="cmbAmPm" Margin="5,0" 
-                          Width="50" SelectedItem="{Binding ampmSeleccionado}">
+                          Width="50" 
+                          SelectedItem="{Binding ampmSeleccionado}">
                     <ComboBoxItem>AM</ComboBoxItem>
                     <ComboBoxItem>PM</ComboBoxItem>
                 </ComboBox>
