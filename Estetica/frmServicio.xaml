@@ -1,0 +1,29 @@
+﻿<Window x:Class="Estetica.frmServicio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Estetica"
+        mc:Ignorable="d"
+        ResizeMode="CanResize"
+        FontSize="15"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen"
+        Title="" Height="350" Width="400">
+    <Grid>
+        <StackPanel Margin="10"
+                    HorizontalAlignment="Center">
+            <TextBlock TextAlignment="Center" Margin="5">Detalle</TextBlock>
+            <TextBox Width="300" TextWrapping="Wrap" 
+                     Name="txtdetalle"
+                         Height="150"
+                         Text="{Binding _cita.Descripcion, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock TextAlignment="Center" Margin="5" Name="txtimporte">Importe</TextBlock>
+            <TextBox Width="100" Text="{Binding _cita.Importe, UpdateSourceTrigger=PropertyChanged}" KeyDown="TextBox_KeyDown"></TextBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Margin="10,20" Width="100" Click="Button_Click_1">Guardar</Button>
+                <Button Margin="0,20" Width="100" Click="Button_Click">Salir</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

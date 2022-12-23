@@ -1,0 +1,72 @@
+﻿<Window x:Class="Estetica.frmBuscador"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Estetica"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        Loaded="Window_Loaded"
+        Title="Buscador" Height="500" Width="600">
+    <Grid Margin="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="40" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                <TextBlock Text="Cliente : "
+                           Margin="5" />
+                <TextBox Name="txtBeneficiario"
+                         Margin="5,2"
+                         Width="300"
+                         TextChanged="TxtBeneficiario_TextChanged"
+                         PreviewKeyDown="TxtBeneficiario_PreviewKeyDown" />
+            </StackPanel>
+
+            <DataGrid Grid.Row="1"
+                      Name="dtgArticulos"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserResizeRows="False"					  
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      RowHeaderWidth="0"
+                      PreviewKeyDown="dtgArticulos_PreviewKeyDown"
+                      MouseDoubleClick="DtgArticulos_MouseDoubleClick"
+					  IsReadOnly="True">
+                <DataGrid.CellStyle>
+                    <Style TargetType="{x:Type DataGridCell}"
+                           >
+                        <Style.Triggers>
+                            <Trigger Property="DataGridCell.IsSelected"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#CCDAFF" />
+                                <Setter Property="Foreground"
+                                        Value="#090909" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Código"                                        
+                                        Binding="{Binding CodCliente}"
+                                        Width="60"/>
+                    <DataGridTextColumn Header="Nombres"
+                                        Binding="{Binding Nombre}"
+                                        Width="80*" />
+                    <DataGridTextColumn Header="Telefono"
+                                        Binding="{Binding Telefono}"
+                                        Width="100" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>
