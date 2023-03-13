@@ -76,5 +76,13 @@ namespace Estetica
                 cmbAmPm.IsDropDownOpen = true;
             }
         }
+
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

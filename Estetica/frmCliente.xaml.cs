@@ -52,5 +52,18 @@ namespace Estetica
                 e.Handled = true;
             }
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtxnombre.Focus();
+        }
+
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key==Key.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

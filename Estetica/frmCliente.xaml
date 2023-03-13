@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:Estetica"
         mc:Ignorable="d"
         FontSize="14"
+        Loaded="Window_Loaded"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
-        Title="frmCliente" Height="300" Width="650">
+        PreviewKeyDown="Window_PreviewKeyDown"
+        Title="Datos del cliente" Height="300" Width="650">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80"></ColumnDefinition>
@@ -48,6 +50,7 @@
                  Text="{Binding cliente.Nombre}"
                  Margin="5,0"
                  Height="30"
+                 Name="txtxnombre"
                  Width="500"
                  HorizontalAlignment="Left"
                  VerticalAlignment="Top"

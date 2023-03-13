@@ -53,27 +53,36 @@ namespace Estetica
                 {
                     if (_cita.Importe > 0)
                     {
-                        Servicio ser = new Servicio();
-                        ser.CodCliente = _cita.CodCliente;
-                        ser.IdCitas = _cita.IdCitas;
-                        ser.Descripcion = _cita.Descripcion;
-                        ser.Importe = _cita.Importe;
-
-                        var result = _da.servicioGuarda(ser);
-
-                        if (result.Value)
+                        if (_cita.Descripcion != null && _cita.Descripcion != "")
                         {
-                            Msg.Mensaje(result.Message, Msg.Icono.Success);
-                            this.Close();
+                            Servicio ser = new Servicio();
+                            ser.CodCliente = _cita.CodCliente;
+                            ser.IdCitas = _cita.IdCitas;
+                            ser.Descripcion = _cita.Descripcion;
+                            ser.Importe = _cita.Importe;
+
+                            var result = _da.servicioGuarda(ser);
+
+                            if (result.Value)
+                            {
+                                Msg.Mensaje(result.Message, Msg.Icono.Success);
+                                this.Close();
+                            }
+                            else
+                            {
+                                Msg.Mensaje(result.Message, Msg.Icono.Error);
+                            }
                         }
                         else
                         {
-                            Msg.Mensaje(result.Message, Msg.Icono.Error);
+                            Msg.Mensaje("Ingrese el detalle.", Msg.Icono.Warning);
+                            txtdetalle.Focus();
                         }
                     }
                     else
                     {
-                        Msg.Mensaje("El importe debe ser mayor a 0", Msg.Icono.Warning);
+                        Msg.Mensaje("El importe debe ser mayor a 0.", Msg.Icono.Warning);
+                        txtimporte.Focus();
                     }
                 }
             }
@@ -92,6 +101,14 @@ namespace Estetica
             else
             {
                 e.Handled = true;
+            }
+        }
+
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                this.Close();
             }
         }
     }

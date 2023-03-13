@@ -8,13 +8,14 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
         Loaded="Window_Loaded"
+        PreviewKeyDown="Window_PreviewKeyDown"
         FontSize="15"
         Title="Cita" Height="400" Width="500">
     <Grid>
         <StackPanel Margin="30">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Código: " Width="100" TextAlignment="Right"/>
-                <TextBox Width="50" Text="{Binding buscar, UpdateSourceTrigger=PropertyChanged}"
+                <TextBlock Text="Cliente: " Width="100" TextAlignment="Right"/>
+                <TextBox Width="100" Text="{Binding buscar, UpdateSourceTrigger=PropertyChanged}"
                          Name="txtbuscar"
                          PreviewKeyDown="TextBox_PreviewKeyDown"
                          ></TextBox>
@@ -33,7 +34,7 @@
                 <TextBox Name="txthora" Width="40"
                          PreviewKeyDown="txthora_PreviewKeyDown"
                          MaxLength="2" Text="{Binding hora}"></TextBox>
-                <TextBlock Width="60" Text="minuto: " TextAlignment="Right"/>
+                <TextBlock Width="10" Text=":" TextAlignment="Center"/>
                 <TextBox Name="txtmin" Width="40" 
                          PreviewKeyDown="txtmin_PreviewKeyDown"
                          MaxLength="2" Text="{Binding minuto}"></TextBox>

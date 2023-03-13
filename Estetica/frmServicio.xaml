@@ -8,6 +8,7 @@
         ResizeMode="CanMinimize"
         FontSize="15"
         Loaded="Window_Loaded"
+        PreviewKeyDown="Window_PreviewKeyDown"
         WindowStartupLocation="CenterScreen"
         Title="" Height="350" Width="400">
     <Grid>
@@ -18,8 +19,10 @@
                      Name="txtdetalle"
                          Height="150"
                          Text="{Binding _cita.Descripcion, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock TextAlignment="Center" Margin="5" Name="txtimporte">Importe</TextBlock>
-            <TextBox Width="100" Text="{Binding _cita.Importe, UpdateSourceTrigger=PropertyChanged}" KeyDown="TextBox_KeyDown"></TextBox>
+            <TextBlock TextAlignment="Center" Margin="5" >Importe</TextBlock>
+            <TextBox Width="100" Name="txtimporte"
+                     Text="{Binding _cita.Importe, UpdateSourceTrigger=PropertyChanged}" 
+                     KeyDown="TextBox_KeyDown"></TextBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Margin="10,20" Width="100" Click="Button_Click_1">Guardar</Button>
                 <Button Margin="0,20" Width="100" Click="Button_Click">Salir</Button>

@@ -7,9 +7,10 @@
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
         Loaded="Window_Loaded"
+        PreviewKeyDown="Window_PreviewKeyDown"
         FontSize="15"
         WindowStartupLocation="CenterScreen"
-        Title="frmClientes" Height="450" Width="700">
+        Title="Clientes" Height="450" Width="700">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
